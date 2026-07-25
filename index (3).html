@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do I owe tax on my side hustle? — free UK checker</title>
+<meta name="description" content="A free, honest checker for UK side hustlers. Type in what you've earned and find out in seconds whether HMRC needs to hear from you — and roughly what to set aside.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Karla:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1E4438; --green-deep:#143128;
+    --paper:#FAF7EF; --paper-line:#E6DFCB;
+    --ink:#22271F; --ink-soft:#5C6156;
+    --rule-red:#B0413E;
+    --stamp-red:#B0413E; --stamp-green:#2E6B4F;
+    --mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--green);
+    background-image:radial-gradient(ellipse at 50% -20%, #2A5748 0%, var(--green) 55%, var(--green-deep) 100%);
+    font-family:'Karla',sans-serif;color:var(--ink);
+    min-height:100vh;padding:2.5rem 1rem 4rem;
+  }
+  .wrap{max-width:680px;margin:0 auto}
+
+  header{color:var(--paper);text-align:center;margin-bottom:2.2rem}
+  .kicker{font-family:'Karla',sans-serif;font-style:italic;font-size:.95rem;color:#A8C3B4;margin-bottom:.8rem}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(1.9rem,5.5vw,2.9rem);line-height:1.08;letter-spacing:-.01em}
+  h1 em{font-style:normal;color:#EFD9A7}
+  .sub{max-width:46ch;margin:1rem auto 0;color:#C9D8CE;font-size:1.02rem;line-height:1.55}
+
+  /* the ledger card */
+  .ledger{
+    background:var(--paper);border-radius:6px;position:relative;overflow:hidden;
+    box-shadow:0 30px 60px -18px rgba(0,0,0,.55), 0 2px 0 rgba(255,255,255,.08) inset;
+    background-image:repeating-linear-gradient(to bottom, transparent 0 31px, var(--paper-line) 31px 32px);
+  }
+  .ledger::before{ /* red margin double-rule, like a real accounts book */
+    content:"";position:absolute;top:0;bottom:0;left:2.6rem;width:5px;
+    border-left:1.5px solid var(--rule-red);border-right:1.5px solid var(--rule-red);opacity:.55;
+  }
+  .ledger-inner{padding:2rem 1.6rem 2rem 4rem;position:relative}
+  @media(max-width:520px){
+    .ledger::before{left:1.3rem}
+    .ledger-inner{padding:1.6rem 1.1rem 1.6rem 2.4rem}
+  }
+  .ledger h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:.35rem}
+  .ledger .whisper{font-size:.88rem;color:var(--ink-soft);font-style:italic;margin-bottom:1.4rem}
+
+  .row{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:.55rem 0;flex-wrap:wrap}
+  .row label{font-weight:700;font-size:.98rem}
+  .row .hint{display:block;font-weight:400;font-size:.8rem;color:var(--ink-soft)}
+  .money{position:relative}
+  .money::before{content:"£";position:absolute;left:.7rem;top:50%;transform:translateY(-50%);font-family:var(--mono);color:var(--ink-soft)}
+  input[type=number]{
+    font-family:var(--mono);font-weight:600;font-size:1.05rem;color:var(--ink);
+    width:9.5rem;padding:.45rem .6rem .45rem 1.6rem;text-align:right;
+    background:#fff;border:1.5px solid #CFC7AE;border-radius:4px;
+  }
+  input[type=number]:focus{outline:2.5px solid var(--stamp-green);outline-offset:1px;border-color:var(--stamp-green)}
+  .tickline{display:flex;gap:.6rem;align-items:flex-start;padding:.8rem 0 .3rem}
+  .tickline input{width:1.15rem;height:1.15rem;accent-color:var(--stamp-green);margin-top:.15rem;flex-shrink:0}
+  .tickline label{font-size:.92rem;line-height:1.45}
+
+  /* result ledger lines */
+  .totals{margin-top:1.5rem;border-top:2px solid var(--ink);padding-top:.4rem}
+  .tot{display:flex;justify-content:space-between;align-items:baseline;padding:.42rem 0;font-size:.95rem}
+  .tot .amt{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+  .tot.grand{border-top:1.5px solid var(--ink);margin-top:.3rem;padding-top:.6rem;font-weight:700;font-size:1.05rem}
+  .tot.grand .amt{font-size:1.3rem;color:var(--stamp-red)}
+  .tot .why{font-size:.78rem;color:var(--ink-soft);font-weight:400}
+
+  /* the stamp */
+  .stampzone{min-height:7.5rem;display:flex;align-items:center;justify-content:center;margin:1.4rem 0 .4rem}
+  .stamp{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:800;text-transform:uppercase;
+    letter-spacing:.06em;text-align:center;line-height:1.1;
+    padding:.8rem 1.3rem;border:4px solid currentColor;border-radius:8px;
+    transform:rotate(-6deg);opacity:0;
+    font-size:clamp(1.05rem,3.4vw,1.5rem);
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .93 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.92'/%3E%3C/svg%3E");
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .93 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.92'/%3E%3C/svg%3E");
+    -webkit-mask-size:110px;mask-size:110px;
+  }
+  .stamp.show{animation:thump .28s cubic-bezier(.2,1.4,.4,1) forwards}
+  @keyframes thump{
+    0%{opacity:0;transform:rotate(-6deg) scale(2.1)}
+    100%{opacity:1;transform:rotate(-6deg) scale(1)}
+  }
+  @media(prefers-reduced-motion:reduce){.stamp.show{animation:none;opacity:1}}
+  .stamp.good{color:var(--stamp-green)}
+  .stamp.bad{color:var(--stamp-red)}
+  .stamp small{display:block;font-size:.55em;font-weight:700;letter-spacing:.12em;margin-top:.2rem}
+  .verdict-note{font-size:.92rem;line-height:1.55;color:var(--ink);max-width:52ch;margin:0 auto;text-align:center}
+
+  .deadlines{margin-top:1.3rem;font-size:.88rem}
+  .deadlines div{display:flex;gap:.7rem;padding:.3rem 0;align-items:baseline}
+  .deadlines .d{font-family:var(--mono);font-weight:600;color:var(--rule-red);white-space:nowrap;font-size:.82rem}
+
+  /* CTA */
+  .cta{
+    margin-top:2rem;background:var(--green-deep);color:var(--paper);
+    border-radius:6px;padding:1.5rem 1.6rem;text-align:center;
+    box-shadow:0 20px 40px -16px rgba(0,0,0,.5);
+  }
+  .cta h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.25rem;margin-bottom:.5rem}
+  .cta p{color:#BFD3C6;font-size:.95rem;line-height:1.55;max-width:46ch;margin:0 auto .9rem}
+  .cta a{
+    display:inline-block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+    background:#EFD9A7;color:var(--green-deep);text-decoration:none;
+    padding:.7rem 1.4rem;border-radius:5px;font-size:1rem;
+  }
+  .cta a:hover{background:#F6E7C0}
+  .cta a:focus-visible{outline:3px solid #EFD9A7;outline-offset:3px}
+
+  footer{margin-top:2rem;text-align:center;color:#9DB5A6;font-size:.8rem;line-height:1.6;max-width:56ch;margin-left:auto;margin-right:auto}
+  footer a{color:#CFE0D4}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="kicker">a free checker for UK side hustlers — 2026/27 tax year</p>
+    <h1>Do I owe tax on my <em>side hustle?</em></h1>
+    <p class="sub">Vinted, eBay, Etsy, deliveries, freelancing, dog walking — whatever your hustle is, type in your numbers and get a straight answer. No sign-up, no email, nothing stored. I made this because working out my own first tax return nearly finished me off.</p>
+  </header>
+
+  <section class="ledger" aria-label="Tax checker">
+    <div class="ledger-inner">
+      <h2>Your year so far</h2>
+      <p class="whisper">Rough figures are fine — you can tidy them later. This tax year runs 6 April 2026 to 5 April 2027.</p>
+
+      <div class="row">
+        <label for="income">Money in from the hustle
+          <span class="hint">Everything received, before any platform fees</span>
+        </label>
+        <span class="money"><input type="number" id="income" min="0" step="10" placeholder="0" inputmode="decimal"></span>
+      </div>
+
+      <div class="row">
+        <label for="expenses">What you spent on it
+          <span class="hint">Stock, postage, fees, materials, mileage</span>
+        </label>
+        <span class="money"><input type="number" id="expenses" min="0" step="10" placeholder="0" inputmode="decimal"></span>
+      </div>
+
+      <div class="row">
+        <label for="salary">Day-job salary, if you have one
+          <span class="hint">Yearly, before tax — it sets your tax band</span>
+        </label>
+        <span class="money"><input type="number" id="salary" min="0" step="500" placeholder="0" inputmode="decimal"></span>
+      </div>
+
+      <div class="tickline">
+        <input type="checkbox" id="declutter">
+        <label for="declutter">I'm only selling my own old belongings — clothes I've worn, the exercise bike I never used, that sort of thing. Not buying or making things to sell.</label>
+      </div>
+
+      <div class="stampzone" aria-live="polite">
+        <div class="stamp" id="stamp"></div>
+      </div>
+      <p class="verdict-note" id="verdictNote">Type your money in above and the verdict gets stamped here.</p>
+
+      <div class="totals" id="totals" hidden>
+        <div class="tot"><span>Money in</span><span class="amt" id="tIncome"></span></div>
+        <div class="tot"><span>Your deduction <span class="why" id="tWhy"></span></span><span class="amt" id="tDeduct"></span></div>
+        <div class="tot"><span>Taxable profit</span><span class="amt" id="tProfit"></span></div>
+        <div class="tot"><span>Income tax (est.)</span><span class="amt" id="tTax"></span></div>
+        <div class="tot"><span>Class 4 National Insurance (est.)</span><span class="amt" id="tNI"></span></div>
+        <div class="tot grand"><span>Worth setting aside</span><span class="amt" id="tTotal"></span></div>
+      </div>
+
+      <div class="deadlines" id="deadlines" hidden>
+        <div><span class="d">5 OCT 2027</span><span>Register for Self Assessment on gov.uk — free, takes about ten minutes.</span></div>
+        <div><span class="d">31 JAN 2028</span><span>File your return and pay. Miss it and it's an automatic £100 fine.</span></div>
+        <div><span class="d">HEADS UP</span><span>Vinted, eBay, Etsy and the rest now report sellers' earnings straight to HMRC — so tidy records are your best friend.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h3>Now keep it that painless all year</h3>
+    <p>I turned my own messy system into a proper bookkeeping spreadsheet — log sales in seconds, and it watches the £1,000 line, works out your best deduction and tells you what to set aside. Your January self will want to buy you a pint.</p>
+    <a href="https://payhip.com/b/TV64S">Get the Side Hustle Books spreadsheet →</a>
+  </section>
+
+  <footer>
+    <p>A rough guide from one side hustler to another — not tax advice, and it keeps things simple (no student loans, Scottish bands or £100k allowance taper). Rules can change. The official free checker lives at <a href="https://www.gov.uk/check-additional-income-tax" rel="noopener">gov.uk</a>. Nothing you type here leaves your device.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const gbp = n => '£' + n.toLocaleString('en-GB',{minimumFractionDigits:0, maximumFractionDigits:0});
+  const ids = s => document.getElementById(s);
+  const inputs = ['income','expenses','salary'].map(ids);
+  const declutter = ids('declutter');
+
+  // 2026/27: personal allowance 12,570 · basic to 50,270 · higher to 125,140 · additional 45%
+  function incomeTax(x){
+    return .20*Math.max(0,Math.min(x-12570,37700))
+         + .40*Math.max(0,Math.min(x-50270,74870))
+         + .45*Math.max(0,x-125140);
+  }
+  function class4(p){
+    return .06*Math.max(0,Math.min(p-12570,37700)) + .02*Math.max(0,p-50270);
+  }
+
+  function stamp(text, small, good){
+    const s = ids('stamp');
+    s.classList.remove('show','good','bad');
+    void s.offsetWidth; // restart animation
+    s.innerHTML = text + (small?'<small>'+small+'</small>':'');
+    s.classList.add(good?'good':'bad','show');
+  }
+
+  function update(){
+    const income  = Math.max(0, +inputs[0].value || 0);
+    const spent   = Math.max(0, +inputs[1].value || 0);
+    const salary  = Math.max(0, +inputs[2].value || 0);
+    const note = ids('verdictNote'), totals = ids('totals'), dl = ids('deadlines');
+
+    if (declutter.checked){
+      stamp("That's decluttering,", "not trading", true);
+      note.textContent = "Selling your own belongings for less than you paid isn't taxable income — HMRC calls that decluttering, not a business. No registering, no return. (Rare exception: single items sold for over £6,000 can touch Capital Gains Tax.) The moment you start buying or making things to sell, untick the box.";
+      totals.hidden = true; dl.hidden = true;
+      return;
+    }
+
+    if (income === 0){
+      ids('stamp').classList.remove('show');
+      note.textContent = "Type your money in above and the verdict gets stamped here.";
+      totals.hidden = true; dl.hidden = true;
+      return;
+    }
+
+    if (income <= 1000){
+      stamp("Relax —", "nothing to file", true);
+      note.textContent = "You're inside the £1,000 trading allowance, so HMRC doesn't need to hear from you for this. Keep a simple note of what you earn, because if you cross £1,000 the picture changes — and you're " + gbp(1000-income) + " away.";
+      totals.hidden = true; dl.hidden = true;
+      return;
+    }
+
+    // over the allowance
+    const useAllowance = spent <= 1000;
+    const deduction = Math.max(1000, spent);
+    const profit = Math.max(0, income - deduction);
+    const tax = Math.max(0, incomeTax(salary + profit) - incomeTax(salary));
+    const ni = class4(profit);
+    const total = tax + ni;
+
+    stamp("Register with HMRC", "by 5 Oct 2027", false);
+    note.textContent = "You've passed the £1,000 trading allowance, so Self Assessment is on the cards. Genuinely not scary — here's your rough picture:";
+
+    ids('tIncome').textContent = gbp(income);
+    ids('tDeduct').textContent = '−' + gbp(deduction);
+    ids('tWhy').textContent = useAllowance ? "(flat £1,000 allowance beats your costs)" : "(your real costs beat the flat allowance)";
+    ids('tProfit').textContent = gbp(profit);
+    ids('tTax').textContent = gbp(Math.round(tax));
+    ids('tNI').textContent = gbp(Math.round(ni));
+    ids('tTotal').textContent = gbp(Math.round(total));
+    totals.hidden = false; dl.hidden = false;
+  }
+
+  inputs.forEach(i => i.addEventListener('input', update));
+  declutter.addEventListener('change', update);
+})();
+</script>
+</body>
+</html>
