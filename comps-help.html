@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comps — Help</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--night:#15161A;--night-2:#1D1F25;--chalk:#F2F0EA;--dim:#9A9CA5;--hair:#33363F;--amber:#FFB020;--lime:#4ADE80;--rust:#F26B5B}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--night);color:var(--chalk);font-family:'Archivo',system-ui,sans-serif;
+    line-height:1.7;font-size:16px;max-width:680px;margin:0 auto;padding:3rem 1.3rem 4rem}
+  h1{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.4rem}
+  .sub{color:var(--dim);margin-bottom:2rem}
+  h2{font-size:1.1rem;font-weight:800;margin-top:2.2rem;margin-bottom:.5rem;color:var(--amber)}
+  p,li{color:var(--dim);margin-bottom:.7rem}
+  li strong,p strong{color:var(--chalk)}
+  ul,ol{padding-left:1.3rem}
+  a{color:var(--amber)}
+  code{font-family:'IBM Plex Mono',monospace;font-size:.88em;background:var(--night-2);
+    padding:.12rem .4rem;border-radius:4px;color:var(--chalk)}
+  .card{background:var(--night-2);border:1px solid var(--hair);border-radius:9px;padding:1.1rem 1.2rem;margin:1.2rem 0}
+  .card.good{border-left:3px solid var(--lime)}
+  .card.warn{border-left:3px solid var(--rust)}
+  .card p:last-child{margin-bottom:0}
+  table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.94rem}
+  td{padding:.55rem .4rem;border-bottom:1px solid var(--hair);color:var(--dim)}
+  td:first-child{color:var(--chalk);font-weight:700;width:38%}
+</style>
+</head>
+<body>
+  <h1>Comps: help sheet</h1>
+  <p class="sub">Two minutes of reading, then better decisions in charity shops forever.</p>
+
+  <h2>The basic routine</h2>
+  <ol>
+    <li>Click the Comps icon in your Chrome toolbar.</li>
+    <li>Type <strong>what the thing is</strong>. Brand, item, size is usually perfect.</li>
+    <li>Add <strong>what it costs you</strong> and roughly what <strong>postage</strong> will run to.</li>
+    <li>Press the button and wait a few seconds while it reads eBay's completed sales.</li>
+  </ol>
+
+  <h2>Searching well, which matters more than anything</h2>
+  <p>The quality of your answer depends almost entirely on the words you type. eBay matches text, so
+  a full description finds nothing while a tight one finds everything.</p>
+  <table>
+    <tr><td>Do this</td><td><code>nike air force 1 uk 8</code></td></tr>
+    <tr><td>Not this</td><td><code>white trainers good condition barely worn size 8</code></td></tr>
+    <tr><td>Do this</td><td><code>north face nuptse 700 medium</code></td></tr>
+    <tr><td>Not this</td><td><code>black puffer coat warm winter jacket</code></td></tr>
+  </table>
+  <p>If you get very few results, drop a word. If the recent sales list shows the wrong kind of item,
+  add one. Size matters for clothes and shoes. For electronics, model numbers beat everything.</p>
+
+  <h2>Reading the numbers</h2>
+  <ul>
+    <li><strong>The big figure</strong> is the median sold price: the middle of what things like this
+    actually went for. It ignores one lunatic paying triple, which an average would not.</li>
+    <li><strong>The bar</strong> shows the full range, with the shaded part covering the middle half
+    of sales. A wide bar means condition and detail matter a lot for this item.</li>
+    <li><strong>You would keep</strong> is the figure that decides things: sold price minus fees,
+    postage and what you paid.</li>
+  </ul>
+
+  <div class="card good">
+    <p><strong>Selling cheaper right now</strong> lists live listings going for well under the usual
+    sold price, postage included. If you are buying for yourself, check here before paying full price.
+    If you are sourcing, these are the ones worth a closer look.</p>
+  </div>
+
+  <h2>The verdicts, and what they mean</h2>
+  <table>
+    <tr><td>Buy it</td><td>Healthy profit and a decent margin. Go on then.</td></tr>
+    <tr><td>Worth it</td><td>Solid money, if you do not mind the packing and posting.</td></tr>
+    <tr><td>Marginal</td><td>There is profit, but not much. Only worth it if it sells fast.</td></tr>
+    <tr><td>Leave it</td><td>Less than the price of a coffee for all that effort.</td></tr>
+    <tr><td>Walk away</td><td>You would lose money. Put it back.</td></tr>
+  </table>
+
+  <h2>No results came back</h2>
+  <ul>
+    <li><strong>Use fewer words.</strong> Nine times out of ten this is it.</li>
+    <li>Check the item genuinely sells on eBay UK. Very local or very niche things sometimes do not.</li>
+    <li>Give it a moment and try again. Occasionally eBay is slow to render and the read times out.</li>
+    <li>If the numbers ever look obviously wrong, that usually means eBay has changed their page layout.
+    Email me and it gets fixed.</li>
+  </ul>
+
+  <div class="card warn">
+    <p><strong>Fees are an estimate.</strong> Comps assumes eBay's standard cut, deliberately rounded in
+    eBay's favour so reality is usually kinder than the prediction. Your own account may differ, especially
+    with a shop subscription or promoted listings. Check your seller fees for exact figures.</p>
+  </div>
+
+  <h2>Your data</h2>
+  <p>There is none to worry about. Comps stores nothing about you and sends nothing anywhere. Full detail
+  in the <a href="comps-privacy.html">privacy policy</a>.</p>
+
+  <h2>Still stuck</h2>
+  <p>Email <a href="mailto:simi.enquiries@gmail.com">simi.enquiries@gmail.com</a>. Bug reports are genuinely
+  welcome, this thing gets better every time somebody tells me what it got wrong. If it saved you from a bad
+  buy, <a href="https://buymeacoffee.com/4e9iKDxpUu">a coffee makes my week</a>.</p>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comps — what did it actually sell for?</title>
+<meta name="description" content="A free Chrome extension for UK resellers. Check real eBay sold prices before you buy, see your profit after fees, and spot live listings going cheaper than usual.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#15161A; --night-2:#1D1F25; --card:#22252C;
+    --chalk:#F2F0EA; --dim:#9A9CA5; --hair:#33363F;
+    --amber:#FFB020; --lime:#4ADE80; --rust:#F26B5B;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  ::selection{background:var(--amber);color:var(--night)}
+  html{scroll-behavior:smooth}
+  body{background:var(--night);color:var(--chalk);font-family:'Archivo',system-ui,sans-serif;
+    font-size:17px;line-height:1.6;
+    background-image:radial-gradient(ellipse at 50% -10%, #23262F 0%, var(--night) 60%)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 1.3rem}
+  a{color:var(--amber)}
+
+  header{padding:4.5rem 0 3rem;text-align:center}
+  .badge{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--night);background:var(--amber);
+    padding:4px 10px;border-radius:4px;margin-bottom:1.4rem}
+  h1{font-size:clamp(2.4rem,7vw,4.2rem);font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:1rem}
+  h1 em{font-style:normal;color:var(--amber)}
+  .lede{color:var(--dim);font-size:1.12rem;max-width:46ch;margin:0 auto 2rem}
+  .cta{display:inline-block;background:var(--amber);color:var(--night);font-weight:800;
+    text-decoration:none;padding:.95rem 1.8rem;border-radius:8px;font-size:1.05rem}
+  .cta:hover{background:#FFC24D}
+  .under{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:.9rem}
+
+  section{padding:3.2rem 0;border-top:1px solid var(--hair)}
+  h2{font-size:1.7rem;font-weight:800;letter-spacing:-.02em;margin-bottom:1.4rem}
+  p{color:var(--dim);margin-bottom:1rem}
+  p strong{color:var(--chalk);font-weight:700}
+
+  .demo{background:var(--card);border:1.5px solid var(--hair);border-radius:12px;padding:1.4rem;margin:1.6rem 0}
+  .demo .big{font-family:var(--mono);font-size:2.6rem;font-weight:700;line-height:1}
+  .demo .cap{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+  .demo .verdict{font-size:1.5rem;font-weight:800;color:var(--lime);margin-top:1rem}
+  .demo .why{font-family:var(--mono);font-size:12px;color:var(--dim)}
+  .demo .row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--hair);font-size:.95rem;color:var(--chalk)}
+  .demo .row span:last-child{font-family:var(--mono);font-weight:700}
+  .demo .rows{margin-top:1.2rem}
+  .demo .keep span:last-child{color:var(--amber);font-size:1.15rem}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.4rem}
+  @media(max-width:620px){.grid{grid-template-columns:1fr}}
+  .box{background:var(--night-2);border:1px solid var(--hair);border-radius:10px;padding:1.2rem}
+  .box h3{font-size:1.02rem;font-weight:800;margin-bottom:.4rem}
+  .box p{font-size:.93rem;margin:0}
+  .box.lime{border-left:3px solid var(--lime)}
+  .box.amber{border-left:3px solid var(--amber)}
+
+  ol{color:var(--dim);padding-left:1.2rem;margin-top:1rem}
+  ol li{margin-bottom:.6rem}
+  ol li strong{color:var(--chalk)}
+
+  footer{padding:2.6rem 0 4rem;border-top:1px solid var(--hair);font-size:.86rem;color:#6E717A}
+  footer a{color:var(--dim)}
+  footer a:hover{color:var(--amber)}
+  .sister{background:var(--night-2);border-radius:10px;padding:1.2rem;margin-bottom:1.6rem;border:1px solid var(--hair)}
+  .sister p{margin:0;font-size:.95rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="badge">Free · Chrome · UK</span>
+    <h1>What did it <em>actually</em> sell for?</h1>
+    <p class="lede">You are stood in a charity shop holding a jumper, wondering if it is worth four quid.
+    Comps answers that in about eight seconds, using real eBay sales rather than wishful thinking.</p>
+    <a class="cta" href="#install">Add to Chrome, free</a>
+    <p class="under">No sign up. Nothing stored. Nothing sent anywhere.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Asking prices lie. Sold prices do not.</h2>
+    <p>Anyone can list a coat at ninety pounds. That tells you nothing about whether a coat like that
+    ever sells for ninety pounds. Comps reads eBay's <strong>completed sales</strong>, works out the
+    typical price, subtracts the fees and postage everyone forgets, and tells you what you would
+    genuinely keep.</p>
+
+    <div class="demo">
+      <span class="big">£55</span>
+      <span class="cap">typical sold price · 34 sales</span>
+      <div class="verdict">Buy it</div>
+      <div class="why">that is a proper flip</div>
+      <div class="rows">
+        <div class="row"><span>Sells for, typically</span><span>£55</span></div>
+        <div class="row"><span>eBay fees, estimated</span><span>-£7.34</span></div>
+        <div class="row"><span>Postage</span><span>-£3.50</span></div>
+        <div class="row"><span>What you pay for it</span><span>-£5.00</span></div>
+        <div class="row keep"><span>You would keep</span><span>£39.16</span></div>
+      </div>
+    </div>
+
+    <p>It uses the <strong>median</strong>, not the average, on purpose. One person overpaying wildly
+    for something should not convince you that yours is worth that much.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>It also finds the ones going too cheap</h2>
+    <p>Every search checks live listings as well. If somebody is selling the same thing for well under
+    what it normally goes for, postage included, Comps puts it in front of you.</p>
+    <div class="grid">
+      <div class="box lime">
+        <h3>Buying for yourself</h3>
+        <p>Do not pay full price for something that four other people are quietly selling cheaper this
+        afternoon.</p>
+      </div>
+      <div class="box amber">
+        <h3>Buying to flip</h3>
+        <p>An underpriced listing is a sourcing opportunity. The profit maths is right there next to it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <ol>
+      <li><strong>Type what you are looking at.</strong> Brand, item, size. Fewer words beats a full description.</li>
+      <li><strong>Add what it costs you</strong> and roughly what postage will be.</li>
+      <li><strong>Press the button.</strong> Comps opens eBay's own sold search in the background, reads the
+      real prices, closes the tab, and shows you the verdict.</li>
+    </ol>
+    <p style="margin-top:1.4rem">It reads. It never bids, buys, lists or messages. Everything happens in your
+    own browser, exactly as if you had run the search yourself, only faster and with the arithmetic done.</p>
+    <p><a class="cta" href="#" id="storeLink">Add to Chrome, free</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="sister">
+      <p>Comps has a sister. <a href="https://i-amour.github.io/side-hustle-tax-checker/">Shoebox</a> keeps
+      your Vinted sales filed for tax, and there is a free
+      <a href="https://i-amour.github.io/side-hustle-tax-checker/">checker</a> that tells you whether HMRC
+      needs to hear from you at all. Same person, same rules: free, private, no bots.</p>
+    </div>
+    <p>Built by a computer science student who sells second hand to get through uni.
+    Fee figures are estimates and eBay changes them from time to time, so treat the numbers as a
+    good guide rather than gospel. Not affiliated with eBay.
+    <a href="comps-privacy.html">Privacy</a> · <a href="comps-help.html">Help</a> ·
+    <a href="https://buymeacoffee.com/4e9iKDxpUu">Buy me a coffee</a></p>
+  </div>
+</footer>
+
+<script>
+  // Store link gets filled in once the listing is live
+  var STORE_URL = "";
+  if (STORE_URL) {
+    document.querySelectorAll('.cta').forEach(function (a) { a.href = STORE_URL; });
+  }
+</script>
+</body>
+</html>
