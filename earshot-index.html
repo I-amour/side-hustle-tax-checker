@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earshot — free Discord translation with no limits</title>
+<meta name="description" content="A free Chrome extension that translates Discord messages on your own device. No quotas, no account, no cloud. Built for anyone who has ever lurked in a server they could not read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#16132A; --panel:#1E1A34; --line:#332C4E;
+    --chalk:#F1ECF7; --mute:#9A93B4;
+    --coral:#FF8A65; --mint:#68D9A7; --rose:#F2687F;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  ::selection{background:var(--coral);color:var(--night)}
+  html{scroll-behavior:smooth}
+  body{background:var(--night);color:var(--chalk);font-family:'Outfit',system-ui,sans-serif;
+    font-size:17px;line-height:1.65;
+    background-image:radial-gradient(ellipse at 50% -12%, #262048 0%, var(--night) 62%)}
+  .wrap{max-width:740px;margin:0 auto;padding:0 1.3rem}
+  a{color:var(--coral)}
+
+  header{padding:4.5rem 0 3rem}
+  .badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--night);background:var(--coral);padding:4px 10px;border-radius:4px;margin-bottom:1.5rem}
+  h1{font-size:clamp(2.3rem,6.5vw,3.7rem);font-weight:900;letter-spacing:-.03em;line-height:1.05;margin-bottom:1.1rem}
+  h1 em{font-style:normal;color:var(--coral)}
+  .lede{color:var(--mute);font-size:1.13rem;max-width:52ch;margin-bottom:2rem}
+  .cta{display:inline-block;background:var(--coral);color:var(--night);font-weight:800;
+    text-decoration:none;padding:.95rem 1.8rem;border-radius:9px;font-size:1.05rem}
+  .cta:hover{background:#FFA184}
+  .under{font-family:var(--mono);font-size:12px;color:var(--mute);margin-top:.9rem}
+
+  section{padding:3.2rem 0;border-top:1px solid var(--line)}
+  h2{font-size:1.65rem;font-weight:800;letter-spacing:-.02em;margin-bottom:1.2rem}
+  p{color:var(--mute);margin-bottom:1rem}
+  p strong{color:var(--chalk);font-weight:600}
+
+  /* chat mock */
+  .chat{background:#2B2D31;border-radius:12px;padding:1.3rem 1.4rem;margin:1.6rem 0;
+    font-family:'gg sans','Helvetica Neue',sans-serif}
+  .msg{display:flex;gap:11px;margin-bottom:1.1rem}
+  .av{width:34px;height:34px;border-radius:50%;flex:none}
+  .av.a{background:linear-gradient(135deg,#F2687F,#FF8A65)}
+  .av.b{background:linear-gradient(135deg,#5865F2,#68D9A7)}
+  .who{font-size:.92rem;font-weight:600;color:#F2F3F5}
+  .who span{font-size:.7rem;color:#949BA4;font-weight:400;margin-left:7px}
+  .said{color:#DBDEE1;font-size:.96rem;margin-top:1px}
+  .tr{margin-top:3px;padding:2px 0 2px 10px;border-left:2px solid rgba(255,138,101,.55);font-size:.93rem}
+  .tr .tag{font-size:.64rem;font-weight:800;letter-spacing:.055em;text-transform:uppercase;color:rgba(255,138,101,.95);margin-right:7px}
+  .tr .txt{color:#DBDEE1;opacity:.88}
+  .code{background:#1E1F22;border-radius:5px;padding:.1rem .35rem;font-family:var(--mono);font-size:.86rem;color:#DBDEE1}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.4rem}
+  @media(max-width:620px){.grid{grid-template-columns:1fr}}
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:1.2rem}
+  .box h3{font-size:1rem;font-weight:800;margin-bottom:.4rem}
+  .box p{font-size:.93rem;margin:0}
+  .box.coral{border-left:3px solid var(--coral)}
+  .box.mint{border-left:3px solid var(--mint)}
+
+  .deal div{display:flex;gap:10px;margin-bottom:.7rem;color:var(--mute);font-size:1rem}
+  .deal .tick{color:var(--mint);font-weight:800;flex:none}
+  .deal b{color:var(--chalk);font-weight:600}
+
+  .req{font-size:.93rem}
+  .req li{margin-bottom:.4rem;color:var(--mute)}
+  .req ul{padding-left:1.2rem;margin-top:.6rem}
+
+  footer{padding:2.6rem 0 4rem;border-top:1px solid var(--line);font-size:.87rem;color:#6F688A}
+  footer a{color:var(--mute)}
+  footer a:hover{color:var(--coral)}
+  .sister{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:1.2rem;margin-bottom:1.5rem}
+  .sister p{margin:0;font-size:.94rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="badge">Free · Chrome · Discord</span>
+    <h1>Everyone's talking.<br>Now you can <em>hear them</em>.</h1>
+    <p class="lede">Earshot translates Discord messages right on your own computer. No quotas, no account,
+    nothing sent to anyone's server. Built because lurking in a server you cannot read is a lonely way to
+    spend an evening.</p>
+    <a class="cta" href="#install" id="ctaTop">Add to Chrome, free</a>
+    <p class="under">No sign up. No card. No daily limit, ever.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>What it actually looks like</h2>
+
+    <div class="chat">
+      <div class="msg">
+        <div class="av a"></div>
+        <div>
+          <div class="who">rafa<span>today at 21:04</span></div>
+          <div class="said">alguém sabe se o servidor vai voltar hoje?</div>
+          <div class="tr"><span class="tag">Portuguese</span><span class="txt">does anyone know if the server is coming back today?</span></div>
+        </div>
+      </div>
+      <div class="msg">
+        <div class="av b"></div>
+        <div>
+          <div class="who">mert<span>today at 21:05</span></div>
+          <div class="said">bende aynı sorun var, <span class="code">--force</span> denedin mi?</div>
+          <div class="tr"><span class="tag">Turkish</span><span class="txt">i have the same problem, have you tried it?</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p>The original message stays exactly where it was. The translation sits underneath it, quietly, with the
+    language it came from. <strong>Nothing is ever replaced.</strong> Machine translation gets things wrong
+    sometimes, and plenty of people using this are learning the language, so hiding the original would be
+    taking something away.</p>
+
+    <p>And notice the <span class="code">--force</span> in the second message. Code, links, mentions, custom
+    emoji and slash commands are left completely alone. Half of Discord is dev servers, and a translated
+    code block is worse than no translation at all.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Why every other one runs out</h2>
+    <p>Have a look at the reviews on the alternatives and you will see the same three complaints over and
+    over: a daily limit nobody told you about, a paywall that appears mid-conversation, and the thing
+    quietly breaking.</p>
+    <p><strong>That is not laziness, it is arithmetic.</strong> They send every message to a cloud
+    translation service that charges them per translation, so every user costs them money and rationing
+    is the only way the sums work.</p>
+    <p>Earshot uses the translator Chrome now ships inside the browser itself. The model downloads once and
+    lives on your machine. There is no per-message cost, which is why there is no per-message limit.
+    <strong>Unlimited is not generosity here, it is just how it works.</strong></p>
+
+    <div class="grid">
+      <div class="box coral">
+        <h3>Nothing to ration</h3>
+        <p>No cloud call means no cost per message, which means no quota to hide from you in the small print.</p>
+      </div>
+      <div class="box mint">
+        <h3>Nothing to leak</h3>
+        <p>Your conversations never leave the machine. Not to me, not to anyone. There is no server to send them to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap deal">
+    <h2>The deal, in four lines</h2>
+    <div><span class="tick">✓</span><span><b>No limits.</b> Not 200 a day, not 50 an hour. None, permanently.</span></div>
+    <div><span class="tick">✓</span><span><b>Nothing leaves your computer.</b> Works offline once the language pack is down.</span></div>
+    <div><span class="tick">✓</span><span><b>The original stays put.</b> Translations go underneath, never over the top.</span></div>
+    <div><span class="tick">✓</span><span><b>Your typing is yours.</b> Earshot reads the chat and never touches the message box or your slash commands.</span></div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <h2>What you need</h2>
+    <p class="req">Being straight with you before you install, because there is nothing worse than a tool
+    that installs happily and then silently does nothing:</p>
+    <ul class="req">
+      <li>Chrome 138 or newer, on <strong>desktop</strong>. These browser APIs do not exist on phones or tablets yet.</li>
+      <li>Around 22GB of free disk space, which is Chrome's requirement rather than mine.</li>
+      <li>A one-time language pack download the first time you meet a new language. After that it is instant, and works offline.</li>
+      <li>Roughly 39 languages supported so far, which is Chrome's current list and grows over time.</li>
+    </ul>
+    <p style="margin-top:1.4rem">If your setup cannot do it, Earshot will tell you plainly when you open it,
+    rather than pretending.</p>
+    <p><a class="cta" href="#" id="ctaBottom">Add to Chrome, free</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="sister">
+      <p>Earshot is one of a few small free tools I have built. There is also
+      <a href="https://i-amour.github.io/side-hustle-tax-checker/">Shoebox</a> for people selling on Vinted,
+      and Comps for anyone buying to resell. Same rules everywhere: free, private, no bots, no nonsense.</p>
+    </div>
+    <p>Made by a computer science student who spent too long as the quiet one in servers she could not read.
+    Not affiliated with Discord. Translation is machine translation, so treat anything important with the
+    same caution you would give any translator.
+    <a href="earshot-privacy.html">Privacy</a> · <a href="earshot-help.html">Help</a> ·
+    <a href="https://buymeacoffee.com/4e9iKDxpUu">Buy me a coffee</a></p>
+  </div>
+</footer>
+
+<script>
+  // Fill this in once the store listing is live
+  var STORE_URL = "";
+  if (STORE_URL) {
+    document.querySelectorAll(".cta").forEach(function (a) { a.href = STORE_URL; });
+  }
+</script>
+</body>
+</html>
