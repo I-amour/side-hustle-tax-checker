@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earshot — Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{--night:#16132A;--panel:#1E1A34;--line:#332C4E;--chalk:#F1ECF7;--mute:#9A93B4;--coral:#FF8A65}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--night);color:var(--chalk);font-family:'Outfit',system-ui,sans-serif;
+    line-height:1.7;font-size:16px;max-width:660px;margin:0 auto;padding:3rem 1.3rem 4rem}
+  h1{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.3rem}
+  .date{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mute);margin-bottom:1.6rem}
+  h2{font-size:1.05rem;font-weight:800;margin-top:2rem;margin-bottom:.4rem;color:var(--coral)}
+  p{color:var(--mute);margin-bottom:.8rem}
+  a{color:var(--coral)}
+  .tldr{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--coral);
+    border-radius:9px;padding:1.1rem 1.3rem;margin:1.4rem 0}
+  .tldr p{color:var(--chalk);margin:0}
+</style>
+</head>
+<body>
+  <h1>Earshot: Privacy Policy</h1>
+  <p class="date">Last updated: 10 August 2026</p>
+
+  <div class="tldr">
+    <p><strong>The short version:</strong> Earshot collects nothing and sends nothing anywhere. There is no
+    account, no server of mine, and no analytics. Translation happens inside your own browser using a model
+    stored on your own computer, so your conversations never travel.</p>
+  </div>
+
+  <h2>What Earshot does</h2>
+  <p>When you are on Discord in your browser and Earshot is switched on, it reads the text of messages
+  already displayed on your screen, works out what language they are in, and translates them using Chrome's
+  built-in on-device Translator and Language Detector. The translation is added underneath the original
+  message in your browser window and is not stored anywhere.</p>
+
+  <h2>What Earshot collects</h2>
+  <p>Nothing. Message text is processed in memory to produce a translation and then discarded. Recent
+  translations are held in memory briefly so a repeated message does not need translating twice, and that
+  disappears when you close or reload the tab. Nothing is written to a server, logged, or shared, because
+  there is no server involved at any point.</p>
+
+  <h2>What is stored on your device</h2>
+  <p>Two settings only: whether Earshot is switched on, and which language you want messages translated
+  into. These live in Chrome's local extension storage on your own machine. Separately, Chrome itself
+  downloads and stores translation language packs, which is a browser feature rather than something Earshot
+  controls or can access.</p>
+
+  <h2>What Earshot never does</h2>
+  <p>It does not read or modify your message box, send messages, react, join servers, or perform any action
+  on Discord on your behalf. It does not access your Discord account details, credentials, direct message
+  history beyond what is visible on screen, or any other site. It has no network permissions and makes no
+  outbound requests of any kind.</p>
+
+  <h2>Permissions, in plain words</h2>
+  <p>Storage is used to remember your two settings. Access to discord.com is required so the extension can
+  read the messages on the page in order to translate them, which is its entire function.</p>
+
+  <h2>Third parties</h2>
+  <p>There are none. Earshot is not affiliated with Discord or Google. Using Discord is subject to Discord's
+  own privacy policy exactly as it would be without this extension.</p>
+
+  <h2>Changes</h2>
+  <p>If any of this ever changes, this page will be updated before the change ships and it will be stated
+  plainly in the store listing. Collecting nothing is the point of the product, not a temporary position.</p>
+
+  <h2>Questions</h2>
+  <p>Email <a href="mailto:simi.enquiries@gmail.com">simi.enquiries@gmail.com</a>. A human reads it.</p>
+</body>
+</html>

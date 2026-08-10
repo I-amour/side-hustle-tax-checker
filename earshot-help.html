@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earshot — Help</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{--night:#16132A;--panel:#1E1A34;--line:#332C4E;--chalk:#F1ECF7;--mute:#9A93B4;
+        --coral:#FF8A65;--mint:#68D9A7;--rose:#F2687F}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--night);color:var(--chalk);font-family:'Outfit',system-ui,sans-serif;
+    line-height:1.7;font-size:16px;max-width:680px;margin:0 auto;padding:3rem 1.3rem 4rem}
+  h1{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.4rem}
+  .sub{color:var(--mute);margin-bottom:2rem}
+  h2{font-size:1.1rem;font-weight:800;margin-top:2.2rem;margin-bottom:.5rem;color:var(--coral)}
+  p,li{color:var(--mute);margin-bottom:.7rem}
+  b{color:var(--chalk)}
+  ul,ol{padding-left:1.3rem}
+  a{color:var(--coral)}
+  code{font-family:'IBM Plex Mono',monospace;font-size:.88em;background:var(--panel);
+    padding:.12rem .4rem;border-radius:4px;color:var(--chalk)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:1.1rem 1.2rem;margin:1.2rem 0}
+  .card.warn{border-left:3px solid var(--rose)}
+  .card.good{border-left:3px solid var(--mint)}
+  .card p:last-child{margin-bottom:0}
+</style>
+</head>
+<body>
+  <h1>Earshot: help</h1>
+  <p class="sub">Short, honest answers. If yours is not here, email me and it will be.</p>
+
+  <h2>Getting started</h2>
+  <ol>
+    <li>Install Earshot and open <b>discord.com</b> in Chrome. This works in the browser, not the Discord desktop app.</li>
+    <li>Click the Earshot icon and pick the language you want messages translated <b>into</b>.</li>
+    <li>Open a channel where people are chatting in another language. Translations appear underneath their messages.</li>
+  </ol>
+
+  <div class="card good">
+    <p>The first time Earshot meets a new language it downloads that language pack once, and you will see a
+    small note at the bottom of the screen with the progress. After that it is instant, and it works even
+    with no internet.</p>
+  </div>
+
+  <h2>Nothing is happening</h2>
+  <p>Open the popup first. It checks your actual browser and tells you what is wrong rather than leaving you
+  guessing. The usual causes:</p>
+  <ul>
+    <li><b>Chrome is too old.</b> You need Chrome 138 or newer. Check <code>chrome://settings/help</code>.</li>
+    <li><b>You are on the Discord app, not the website.</b> Extensions cannot run inside the desktop app. Use discord.com in Chrome.</li>
+    <li><b>Not enough disk space.</b> Chrome requires roughly 22GB free to run its on-device models. This is Chrome's rule, not mine.</li>
+    <li><b>Phone or tablet.</b> These browser APIs are desktop only for now. Nothing I can do about that yet.</li>
+    <li><b>The messages are already in your language.</b> Earshot only translates what needs translating.</li>
+  </ul>
+
+  <h2>Some messages get skipped</h2>
+  <p>On purpose, in most cases:</p>
+  <ul>
+    <li><b>Very short messages.</b> "lol", "ok", ":)" and similar are not worth it and detectors get them wrong constantly.</li>
+    <li><b>Code, links, mentions, emoji and slash commands</b> are removed before translating, so a message that is only those things has nothing left to translate.</li>
+    <li><b>Uncertain language.</b> If the detector is not reasonably confident, Earshot stays quiet. Saying nothing is better than confidently mistranslating someone.</li>
+    <li><b>Very long pastes</b> are skipped to keep things quick.</li>
+  </ul>
+
+  <h2>A translation looks wrong</h2>
+  <p>It sometimes will be. This is machine translation, and slang, sarcasm, gaming jargon and typos all
+  throw it. That is exactly why the original message is always left in place directly above the translation,
+  so you can see what was really said and judge for yourself. Treat anything important with the same caution
+  you would give any translator.</p>
+
+  <h2>My language is not in the list</h2>
+  <p>Chrome currently supports around 39 languages for on-device translation, and the list grows over time.
+  If yours is missing today, it may well appear in a future Chrome update without me doing anything.</p>
+
+  <h2>Does it slow Discord down</h2>
+  <p>It should not. Translation happens on your own machine, results are cached so repeated messages cost
+  nothing, and only messages that are actually on your screen get processed. If you do notice a slowdown,
+  tell me, because that is a bug rather than a fact of life.</p>
+
+  <div class="card warn">
+    <p><b>What Earshot will never do:</b> touch your message box, send anything, react to anything, or do
+    anything at all to your Discord account. It reads what is on screen. That is the entire scope, and it is
+    deliberate, because every other translator's reviews are full of people complaining about broken slash
+    commands and hijacked typing.</p>
+  </div>
+
+  <h2>Your data</h2>
+  <p>There is none to worry about. Nothing is collected and nothing is sent anywhere, because there is no
+  server involved at any point. Details in the <a href="earshot-privacy.html">privacy policy</a>.</p>
+
+  <h2>Still stuck</h2>
+  <p>Email <a href="mailto:simi.enquiries@gmail.com">simi.enquiries@gmail.com</a>. Bug reports genuinely
+  welcome, this gets better every time someone tells me what it got wrong. If Earshot got you into a
+  conversation you would have missed, <a href="https://buymeacoffee.com/4e9iKDxpUu">a coffee makes my week</a>.</p>
+</body>
+</html>
