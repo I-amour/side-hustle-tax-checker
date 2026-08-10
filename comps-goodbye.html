@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comps — thanks for trying it</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#15161A; --night-2:#1D1F25; --card:#22252C;
+    --chalk:#F2F0EA; --dim:#9A9CA5; --hair:#33363F;
+    --amber:#FFB020; --lime:#4ADE80;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  ::selection{background:var(--amber);color:var(--night)}
+  body{background:var(--night);color:var(--chalk);font-family:'Archivo',system-ui,sans-serif;
+    font-size:17px;line-height:1.65;min-height:100vh;
+    background-image:radial-gradient(ellipse at 50% -10%,#23262F 0%,var(--night) 60%)}
+  .wrap{max-width:640px;margin:0 auto;padding:3.5rem 1.3rem 4rem}
+  a{color:var(--amber)}
+
+  h1{font-size:clamp(1.9rem,5vw,2.5rem);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:.5rem}
+  .sub{color:var(--dim);margin-bottom:2.2rem}
+  h2{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--dim);margin:2.4rem 0 .8rem;display:flex;align-items:center;gap:10px}
+  h2::after{content:"";flex:1;height:1px;background:var(--hair)}
+  p{color:var(--dim);margin-bottom:1rem}
+  p strong{color:var(--chalk)}
+
+  .reasons{display:flex;flex-direction:column;gap:.6rem;margin:.5rem 0 1.2rem}
+  .reasons a{display:block;background:var(--night-2);border:1px solid var(--hair);
+    border-left:3px solid var(--amber);border-radius:9px;padding:.85rem 1rem;text-decoration:none;color:var(--dim);font-size:.96rem}
+  .reasons a:hover{background:var(--card);border-left-color:var(--lime);color:var(--chalk)}
+  .reasons a b{display:block;font-family:var(--mono);font-size:.83rem;color:var(--chalk);margin-bottom:.15rem;font-weight:700}
+
+  .card{background:var(--card);border:1px solid var(--hair);border-radius:11px;padding:1.2rem;margin:1rem 0}
+  .card h3{font-size:1.02rem;font-weight:800;margin-bottom:.35rem}
+  .card p{margin:0;font-size:.95rem}
+  .card.lime{border-left:3px solid var(--lime)}
+  .card.amber{border-left:3px solid var(--amber)}
+
+  .foot{margin-top:2.6rem;font-size:.86rem;color:#6E717A;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Right then, off you go.</h1>
+  <p class="sub">Comps has been uninstalled. No hard feelings, and thanks for trying it.</p>
+
+  <p>Nothing of yours was ever stored, so there is nothing to delete and nothing sitting on a server
+  with your name on it. That was the deal from the start.</p>
+
+  <h2>If you have ten seconds</h2>
+  <p>This is the only feedback I ever get from someone leaving, and I am one person building this
+  between lectures. Pick whichever is closest and it opens an email with the reason already written.
+  Send it blank if you like.</p>
+
+  <div class="reasons">
+    <a href="mailto:simi.enquiries@gmail.com?subject=Comps%20uninstall%3A%20wrong%20numbers&body=The%20numbers%20looked%20wrong.%20What%20I%20searched%20and%20what%20I%20expected%3A%0A%0A">
+      <b>The numbers looked wrong</b>Prices did not match what I know about the item</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Comps%20uninstall%3A%20no%20results&body=It%20kept%20finding%20nothing.%20What%20I%20searched%3A%0A%0A">
+      <b>It kept finding nothing</b>My searches came back empty</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Comps%20uninstall%3A%20wrong%20country&body=I%20needed%20a%20different%20eBay%20site%3A%0A%0A">
+      <b>I needed eBay.com, not eBay UK</b>Wrong country for me</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Comps%20uninstall%3A%20on%20my%20phone&body=I%20need%20this%20on%20my%20phone%2C%20not%20a%20laptop.%0A%0A">
+      <b>I need it on my phone</b>The shop is where the decision happens</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Comps%20uninstall%3A%20other&body=Why%20I%20removed%20it%3A%0A%0A">
+      <b>Something else</b>Tell me and it may well get fixed</a>
+  </div>
+
+  <p>No form, no tracking, no analytics. Just an email that comes to a person who reads it.</p>
+
+  <h2>Before you go</h2>
+
+  <div class="card lime">
+    <h3>Shoebox</h3>
+    <p>If you sell as well as buy, this one files your Vinted sales into a private ledger and watches the
+    £1,000 HMRC line so January stops being a nightmare. Free, no account, nothing stored.
+    <a href="https://i-amour.github.io/side-hustle-tax-checker/">Have a look</a>.</p>
+  </div>
+
+  <div class="card amber">
+    <h3>Side Hustle Books</h3>
+    <p>The full year-round version. A proper bookkeeping spreadsheet for UK resellers: income, costs,
+    mileage, and it works out what to set aside. £8.99 once, no subscription.
+    <a href="https://payhip.com/b/TV64S">Take a look</a>.</p>
+  </div>
+
+  <h2>One last thing</h2>
+  <p>Comps is free and stays free. If it saved you from one bad buy, or you just fancy keeping a skint
+  compsci student in tea while she fixes things at midnight,
+  <a href="https://buymeacoffee.com/4e9iKDxpUu">a coffee makes my week</a>. No obligation at all, you
+  have already given me your time.</p>
+
+  <p class="foot">Changed your mind? It is still on the Chrome Web Store, same place you found it.
+  And if eBay ever changes their layout and I fix something you were annoyed by, it will be in there
+  waiting.</p>
+
+</div>
+</body>
+</html>

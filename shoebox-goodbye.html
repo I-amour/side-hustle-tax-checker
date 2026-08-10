@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shoebox — thanks for trying it</title>
+<style>
+  :root{
+    --paper:#FAF7EF; --line:#E6DFCB; --ink:#22271F; --soft:#6B7062;
+    --green:#1E4438; --green-mid:#2E6B4F; --red:#B0413E; --cream:#FFF6DC;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+    line-height:1.7;font-size:17px;min-height:100vh;
+    background-image:repeating-linear-gradient(to bottom,transparent 0 31px,var(--line) 31px 32px)}
+  .sheet{max-width:620px;margin:0 auto;padding:3.5rem 1.4rem 4rem;position:relative}
+  .sheet::before{content:"";position:absolute;top:0;bottom:0;left:.6rem;width:5px;
+    border-left:1.5px solid var(--red);border-right:1.5px solid var(--red);opacity:.45}
+  .inner{padding-left:2rem}
+  @media(max-width:560px){.sheet::before{left:.2rem}.inner{padding-left:1.2rem}}
+
+  h1{font-family:var(--mono);font-size:1.5rem;font-weight:700;margin-bottom:.4rem;color:var(--ink)}
+  .sub{font-style:italic;color:var(--soft);margin-bottom:2rem}
+  h2{font-family:var(--mono);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--green);margin:2.2rem 0 .7rem}
+  p{margin-bottom:1rem;color:var(--ink)}
+  a{color:var(--green)}
+
+  .reasons{display:flex;flex-direction:column;gap:.55rem;margin:.4rem 0 1rem}
+  .reasons a{display:block;background:#fff;border:1px solid var(--line);border-left:3px solid var(--green-mid);
+    border-radius:5px;padding:.75rem .95rem;text-decoration:none;color:var(--ink);font-size:.97rem}
+  .reasons a:hover{background:var(--cream);border-left-color:var(--red)}
+  .reasons a b{display:block;font-family:var(--mono);font-size:.82rem;color:var(--green);margin-bottom:.15rem}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:1.1rem 1.2rem;margin:1rem 0}
+  .card p:last-child{margin-bottom:0}
+  .card .name{font-family:var(--mono);font-weight:700;color:var(--green);font-size:.95rem}
+  .foot{margin-top:2.5rem;font-size:.87rem;font-style:italic;color:var(--soft);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="sheet"><div class="inner">
+
+  <h1>📦 Well, that's that then</h1>
+  <p class="sub">Shoebox has been uninstalled. No hard feelings.</p>
+
+  <p>Genuinely, thank you for giving it a go. Your records stayed on your machine the whole time and
+  they have gone with it, so there is nothing of yours sitting on a server somewhere. That was always
+  the deal.</p>
+
+  <h2>If you have ten seconds</h2>
+  <p>I am one person and this is the only feedback I ever get from someone leaving. Pick whichever is
+  closest and it opens an email with the reason already filled in. Send it blank if you like, or add a
+  sentence if you are feeling generous.</p>
+
+  <div class="reasons">
+    <a href="mailto:simi.enquiries@gmail.com?subject=Shoebox%20uninstall%3A%20it%20didn't%20work&body=It%20didn't%20work%20for%20me.%20What%20happened%3A%0A%0A">
+      <b>It didn't work</b>Nothing filed, or it missed my sold items</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Shoebox%20uninstall%3A%20confusing&body=I%20couldn't%20work%20out%20how%20to%20use%20it.%20Where%20I%20got%20stuck%3A%0A%0A">
+      <b>I couldn't work out how to use it</b>Got stuck somewhere</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Shoebox%20uninstall%3A%20not%20needed&body=I%20don't%20need%20it.%20I%20keep%20records%20by%3A%0A%0A">
+      <b>I don't need it</b>I keep records another way, or I do not sell enough</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Shoebox%20uninstall%3A%20missing%20feature&body=It%20was%20missing%20something%20I%20needed%3A%0A%0A">
+      <b>It was missing something</b>Tell me what and it may well get built</a>
+  </div>
+
+  <p>No form, no tracking, no clever analytics. Just an email that comes to a person who reads it.</p>
+
+  <h2>Still need the tax bit sorted</h2>
+
+  <div class="card">
+    <p class="name">The free checker</p>
+    <p>Tells you in about twenty seconds whether HMRC actually needs to hear from you. Most people
+    clearing out their own wardrobe owe nothing at all, and almost nobody says that out loud.
+    <a href="https://i-amour.github.io/side-hustle-tax-checker/">Have a look</a>.</p>
+  </div>
+
+  <div class="card">
+    <p class="name">Side Hustle Books spreadsheet</p>
+    <p>If you would rather do it by hand, this is the spreadsheet I built for myself. Income, expenses,
+    mileage, and it watches the £1,000 line for you. £8.99, no subscription, yours forever.
+    <a href="https://payhip.com/b/TV64S">Take a look</a>.</p>
+  </div>
+
+  <div class="card">
+    <p class="name">Comps</p>
+    <p>If you buy things to resell, this one checks what something actually sold for on eBay before you
+    part with your money. Free, same rules, no account.
+    <a href="https://i-amour.github.io/side-hustle-tax-checker/comps.html">Have a look</a>.</p>
+  </div>
+
+  <h2>One last thing</h2>
+  <p>All of this is free and stays free. If Shoebox was useful even briefly, or if you just want to keep
+  a skint compsci student in tea while she fixes bugs at midnight,
+  <a href="https://buymeacoffee.com/4e9iKDxpUu">a coffee genuinely makes my week</a>. Absolutely no
+  obligation, you have already given me your time and that is worth plenty.</p>
+
+  <p class="foot">Changed your mind? Everything is on the Chrome Web Store, same place you found it.
+  And if you ever hit a January panic, you know where I am.</p>
+
+</div></div>
+</body>
+</html>
