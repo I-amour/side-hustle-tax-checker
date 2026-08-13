@@ -26,9 +26,10 @@
   <p class="date">Last updated: 10 August 2026</p>
 
   <div class="tldr">
-    <p><strong>The short version:</strong> Earshot collects nothing and sends nothing anywhere. There is no
-    account, no server of mine, and no analytics. Translation happens inside your own browser using a model
-    stored on your own computer, so your conversations never travel.</p>
+    <p><strong>The short version:</strong> Earshot collects nothing about you and no analytics. Translation
+    happens entirely inside your own browser using a model stored on your own computer, so your conversations
+    never travel anywhere. The extension makes exactly one network request in its life, and only if you buy
+    the paid unlock: a single check that your licence key is valid. Nothing else ever leaves your machine.</p>
   </div>
 
   <h2>What Earshot does</h2>
@@ -40,8 +41,21 @@
   <h2>What Earshot collects</h2>
   <p>Nothing. Message text is processed in memory to produce a translation and then discarded. Recent
   translations are held in memory briefly so a repeated message does not need translating twice, and that
-  disappears when you close or reload the tab. Nothing is written to a server, logged, or shared, because
-  there is no server involved at any point.</p>
+  disappears when you close or reload the tab. No message content is ever written to a server, logged, or
+  shared, on the free tier or the paid one.</p>
+
+  <h2>The one network request, and only if you pay</h2>
+  <p>If you buy the paid unlock for Reddit, X, Telegram Web and WhatsApp Web, the extension needs to check
+  that your licence key is genuine. When you press Unlock, and only then, it sends your licence key to a
+  small server I run at earshot-licence.simi-enquiries.workers.dev, which asks the payment provider
+  (Payhip) whether that key is valid and returns a yes or a no.</p>
+  <p>That request contains your licence key and nothing else. No message content, no browsing information,
+  no identifiers. The payment provider's reply includes details such as the buyer's email address, and my
+  server deliberately discards all of it and passes back only a yes or a no, because neither the extension
+  nor I have any business holding it. Nothing is logged. The result is stored on your own device so the
+  check never needs repeating.</p>
+  <p>Translation itself never touches the network, on any tier, ever. If you never buy the unlock, the
+  extension never makes a single network request in its entire life.</p>
 
   <h2>What is stored on your device</h2>
   <p>Two settings only: whether Earshot is switched on, and which language you want messages translated
@@ -56,12 +70,16 @@
   outbound requests of any kind.</p>
 
   <h2>Permissions, in plain words</h2>
-  <p>Storage is used to remember your two settings. Access to discord.com is required so the extension can
-  read the messages on the page in order to translate them, which is its entire function.</p>
+  <p>Storage is used to remember your settings and, if you have bought the unlock, that your licence was
+  accepted. Access to the messaging sites listed in the store listing is required so the extension can read
+  the messages on those pages in order to translate them, which is its entire function. Access to the
+  licence server is used only for the single key check described above.</p>
 
   <h2>Third parties</h2>
-  <p>There are none. Earshot is not affiliated with Discord or Google. Using Discord is subject to Discord's
-  own privacy policy exactly as it would be without this extension.</p>
+  <p>Earshot is not affiliated with Discord, Reddit, X, Telegram, WhatsApp or Google. Using those sites is
+  subject to their own privacy policies exactly as it would be without this extension. If you buy the paid
+  unlock, the payment itself is handled entirely by Payhip under their privacy policy, and I never see your
+  card details.</p>
 
   <h2>Changes</h2>
   <p>If any of this ever changes, this page will be updated before the change ships and it will be stated
