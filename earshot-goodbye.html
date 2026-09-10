@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earshot — thanks for trying it</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#16132A; --panel:#1E1A34; --panel2:#241F3C; --line:#332C4E;
+    --chalk:#F1ECF7; --mute:#9A93B4; --faint:#6F688A;
+    --coral:#FF8A65; --mint:#68D9A7;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  ::selection{background:var(--coral);color:var(--night)}
+  body{background:var(--night);color:var(--chalk);font-family:'Outfit',system-ui,sans-serif;
+    font-size:17px;line-height:1.65;min-height:100vh;
+    background-image:radial-gradient(ellipse at 50% -12%,#262048 0%,var(--night) 62%)}
+  .wrap{max-width:660px;margin:0 auto;padding:4rem 1.4rem 5rem}
+  a{color:var(--coral)}
+
+  h1{font-size:clamp(1.9rem,5vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:.6rem}
+  .sub{color:var(--mute);margin-bottom:2rem}
+  h2{font-family:var(--mono);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;
+     color:var(--mute);margin:2.4rem 0 .9rem;display:flex;align-items:center;gap:11px}
+  h2::after{content:"";flex:1;height:1px;background:var(--line)}
+  p{color:var(--mute);margin-bottom:1rem}
+  p strong{color:var(--chalk)}
+
+  .reasons{display:flex;flex-direction:column;gap:.6rem;margin:.6rem 0 1.2rem}
+  .reasons a{display:block;background:var(--panel);border:1px solid var(--line);
+    border-left:3px solid var(--coral);border-radius:10px;padding:.9rem 1.1rem;
+    text-decoration:none;color:var(--mute);font-size:.95rem}
+  .reasons a:hover{background:var(--panel2);border-left-color:var(--mint);color:var(--chalk)}
+  .reasons a b{display:block;font-family:var(--mono);font-size:.82rem;color:var(--chalk);
+    margin-bottom:.2rem;font-weight:600}
+
+  .maybe{background:rgba(104,217,167,.07);border:1px solid rgba(104,217,167,.24);
+    border-radius:11px;padding:1.1rem 1.3rem;margin:1.4rem 0}
+  .maybe p{color:#BFEBD5;margin:0;font-size:.96rem}
+  .maybe b{color:var(--chalk)}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    padding:1.2rem;margin:1rem 0}
+  .card.coral{border-left:3px solid var(--coral)}
+  .card.mint{border-left:3px solid var(--mint)}
+  .card h3{font-size:1.02rem;font-weight:800;margin-bottom:.35rem;color:var(--chalk)}
+  .card p{margin:0;font-size:.94rem}
+
+  footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);
+    font-size:.85rem;color:var(--faint);line-height:1.65}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Right, off you go.</h1>
+  <p class="sub">Earshot has been uninstalled. No hard feelings, and thanks for giving it a go.</p>
+
+  <p>Everything it knew went with it. Your settings, your history, the language packs Chrome
+  downloaded, all of it was on your machine and none of it was anywhere else, so there is nothing
+  sitting on a server with your name on it. That was the deal from the start.</p>
+
+  <div class="maybe">
+    <p><b>One thing, just in case.</b> If you removed it because nothing seemed to happen, that is
+    almost always because the channel was already in your own language. Earshot stays quiet when
+    there is nothing to translate rather than cluttering the chat, so in an English-only server it
+    looks identical to being broken. The other usual cause is using the Discord desktop app instead
+    of discord.com in the browser, where extensions cannot run at all. If either of those was it,
+    it is worth one more go in a busy multilingual server.</p>
+  </div>
+
+  <h2>If you have ten seconds</h2>
+  <p>This is the only feedback anyone ever gives when they leave, and I am one person building this
+  between lectures. Pick whichever is closest and it opens an email with the reason already written.
+  Send it blank if you like, or add a line if you are feeling generous.</p>
+
+  <div class="reasons">
+    <a href="mailto:simi.enquiries@gmail.com?subject=Earshot%20uninstall%3A%20nothing%20happened&body=Nothing%20seemed%20to%20happen.%20Where%20I%20was%20and%20what%20I%20expected%3A%0A%0A">
+      <b>Nothing happened</b>I installed it and never saw a translation</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Earshot%20uninstall%3A%20translations%20were%20wrong&body=The%20translations%20were%20off.%20An%20example%3A%0A%0A">
+      <b>The translations were wrong</b>Or it kept mangling something specific</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Earshot%20uninstall%3A%20confusing&body=I%20could%20not%20work%20out%20how%20to%20set%20it%20up.%20Where%20I%20got%20stuck%3A%0A%0A">
+      <b>I couldn't work out how to set it up</b>Got stuck somewhere in the settings</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Earshot%20uninstall%3A%20slow&body=It%20slowed%20things%20down.%20What%20I%20noticed%3A%0A%0A">
+      <b>It slowed my browser down</b>Or Discord felt heavier with it on</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Earshot%20uninstall%3A%20wrong%20site&body=I%20needed%20it%20on%20a%20site%20it%20does%20not%20support%3A%0A%0A">
+      <b>I needed it somewhere it doesn't work</b>A site, or a phone</a>
+    <a href="mailto:simi.enquiries@gmail.com?subject=Earshot%20uninstall%3A%20other&body=Why%20I%20removed%20it%3A%0A%0A">
+      <b>Something else</b>Tell me and it may well get fixed</a>
+  </div>
+
+  <p>No form, no tracking, no analytics. Just an email that comes to a person who reads it, usually
+  the same day.</p>
+
+  <h2>Before you go</h2>
+
+  <div class="card coral">
+    <h3>Comps</h3>
+    <p>If you buy things to resell, this one reads eBay's completed sales and tells you what something
+    actually sold for, and what you would keep after fees, before you part with your money.
+    <a href="https://i-amour.github.io/side-hustle-tax-checker/comps.html">Have a look</a>.</p>
+  </div>
+
+  <div class="card mint">
+    <h3>Shoebox</h3>
+    <p>And if you sell as well as buy, this files your sales from Vinted, eBay and Depop into one
+    private ledger and watches the £1,000 HMRC line so January stops being a nightmare.
+    <a href="https://i-amour.github.io/side-hustle-tax-checker/">Have a look</a>.</p>
+  </div>
+
+  <p>Same rules as Earshot on both: free, nothing stored, no account, no bots.</p>
+
+  <h2>One last thing</h2>
+  <p>Earshot is free and stays free. If it got you into even one conversation you would have missed,
+  or you just fancy keeping a skint compsci student in tea while she fixes things at midnight,
+  <a href="https://buymeacoffee.com/4e9iKDxpUu">a coffee makes my week</a>. No obligation at all,
+  you have already given me your time and that is worth plenty.</p>
+
+  <footer>
+    Changed your mind? It is still on the Chrome Web Store, same place you found it, and anything you
+    were annoyed by may well be fixed by now.
+    <a href="https://i-amour.github.io/side-hustle-tax-checker/earshot-help.html">Help sheet</a> ·
+    <a href="mailto:simi.enquiries@gmail.com">Email me</a>
+  </footer>
+</div>
+</body>
+</html>
